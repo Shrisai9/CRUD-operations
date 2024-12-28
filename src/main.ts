@@ -1,6 +1,13 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from '@angular/platform-browser'; // Import bootstrapApplication
+import { AppComponent } from './app/app.component'; // Import the standalone component
+import { environment } from './environments/environment';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+if (environment.production) {
+  enableProdMode();
+}
+
+// Use bootstrapApplication for standalone components
+bootstrapApplication(AppComponent)
+  .catch(err => console.error(err));
